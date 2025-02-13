@@ -39,6 +39,10 @@ end
 [~, ind] = min(AIC_values); 
 Selected_modelorder = searchorder(ind); 
  
+figure; stem(searchorder,AIC_values);
+hold on;
+xline(Selected_modelorder,'-r');
+
 %%%% fit final model with selected model order
 %%% use subspace identification to fit initial LSSM
 Initial_LSSM_selected = n4sid(TrainingData,Selected_modelorder, 'Feedthrough', false, 'DisturbanceModel', 'estimate', N4SID_opt);
